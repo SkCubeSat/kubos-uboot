@@ -37,6 +37,10 @@
 #undef CONFIG_BOOTCOUNT_AM33XX
 /* End of undefs */
 
+/* Keep BBB baudrate local to this board instead of changing all AM335x targets */
+#undef CONFIG_BAUDRATE
+#define CONFIG_BAUDRATE         921600
+
 /* If we're compiling for the SPL, we don't have an env area */
 #if defined(CONFIG_SPL_BUILD) && defined(CONFIG_SPL_USBETH_SUPPORT)
 #define CONFIG_ENV_IS_NOWHERE
@@ -96,7 +100,7 @@
         "root=PARTUUID=${uuid} ro " \
         "rootfstype=${mmcrootfstype}\0" \
     "bootfile=kernel\0" \
-    "console=ttyS0,115200\0" \
+    "console=ttyS0,921600\0" \
     "optargs=\0" \
     "loadimage=fatload mmc ${mmcdev}:1 ${loadaddr} /${bootfile}\0" \
     "loadfdt=fatload mmc ${mmcdev}:1 ${fdtaddr} /${board}.dtb\0" \
@@ -117,4 +121,3 @@
     BOOTENV \
     KUBOS_UPDATE_ARGS
 #endif
-
