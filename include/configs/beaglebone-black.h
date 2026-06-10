@@ -40,6 +40,8 @@
 /* Keep BBB baudrate local to this board instead of changing all AM335x targets */
 #undef CONFIG_BAUDRATE
 #define CONFIG_BAUDRATE         921600
+#define CONFIG_SYS_BAUDRATE_TABLE \
+    { 9600, 19200, 38400, 57600, 115200, 921600 }
 
 /* If we're compiling for the SPL, we don't have an env area */
 #if defined(CONFIG_SPL_BUILD) && defined(CONFIG_SPL_USBETH_SUPPORT)
